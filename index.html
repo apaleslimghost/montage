@@ -16,10 +16,23 @@
 //@jsx h
 const {h, render, Component} = preact;
 
+const range = length => Array.from({length}, (_, i) => i);
+
 class StepList extends Component {
-	render(props, state) {
+	constructor(props) {
+		super(props);
+		this.state = {
+			steps: 1,
+		};
+	}
+
+	render(props, {steps}) {
 		return <div>
-			<input type="number" min={1} onChange={ev => this.setState({steps: ev.target.valueAsNumber})} />
+			<input value={steps} type="number" min={1} onChange={ev => this.setState({steps: ev.target.valueAsNumber})} />
+			
+			<table>
+				<tbody>
+					{range(steps).map(i => <tr key={i}>
 		</div>;
 	}
 }
