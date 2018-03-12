@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Montage</title>
+</head>
+
+<body>
+<main></main>
+</body>
+
+<script src="https://unpkg.com/preact"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<script type="text/jsx">
+//@jsx h
+const {h, render, Component} = preact;
+
+class StepList extends Component {
+	render(props, state) {
+		return <div>
+			<input type="number" min={1} onChange={ev => this.setState({steps: ev.target.valueAsNumber})} />
+		</div>;
+	}
+}
+
+render(<StepList />, document.querySelector("main"));
+
+</script>
+</html>
